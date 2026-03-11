@@ -1,0 +1,5 @@
+runs/
+*.log
+*.cmd
+xcelium.d/
+waves.shm/
