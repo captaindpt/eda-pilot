@@ -105,6 +105,7 @@ PEG_DIR="$RUN_DIR/pegasus"
 SCRIPTS_DIR="$RUN_DIR/scripts"
 RTL_DIR="$(dirname "$RTL_FILE")"
 TB_DIR="$(dirname "$TB_FILE")"
+RTL_ROOT_DIR="$(cd "$RTL_DIR/.." && pwd)"
 PT_EFFECTIVE_LIB="$PT_TARGET_LIB"
 PT_SDC_FILE="$PT_DIR/${TOP}_pt.sdc"
 
@@ -319,13 +320,15 @@ set WORK_DIR $::env(FLOW_DC_DIR)
 set RTL_FILE $::env(FLOW_RTL_FILE)
 set SDC_FILE $::env(FLOW_SDC_FILE)
 set TARGET_LIB $::env(FLOW_DC_TARGET_LIB)
+set RTL_ROOT [file dirname [file dirname $RTL_FILE]]
 
 file mkdir $WORK_DIR
 file mkdir "$WORK_DIR/work"
 file mkdir "$WORK_DIR/reports"
 file mkdir "$WORK_DIR/out"
 
-set_app_var search_path [list "." [file dirname $TARGET_LIB] [file dirname $RTL_FILE]]
+cd $RTL_ROOT
+set_app_var search_path [list "." $RTL_ROOT [file dirname $TARGET_LIB] [file dirname $RTL_FILE]]
 set_app_var target_library [list $TARGET_LIB]
 set_app_var link_library [concat "*" $target_library]
 set_app_var synthetic_library [list dw_foundation.sldb]
@@ -359,11 +362,13 @@ set WORK_DIR $::env(FLOW_DC_DIR)
 set RTL_FILE $::env(FLOW_RTL_FILE)
 set SDC_FILE $::env(FLOW_SDC_FILE)
 set TARGET_LIB $::env(FLOW_DC_TARGET_LIB)
+set RTL_ROOT [file dirname [file dirname $RTL_FILE]]
 
 file mkdir $WORK_DIR
 file mkdir "$WORK_DIR/reports"
 file mkdir "$WORK_DIR/out"
 
+cd $RTL_ROOT
 read_libs $TARGET_LIB
 read_hdl -language v2001 $RTL_FILE
 elaborate $TOP
@@ -563,7 +568,7 @@ if [[ -f "$TB_FILE" ]]; then
   echo "[rtl_sim] running Xcelium"
   if (
     cd "$SIM_DIR"
-    bash -lc "source '$CADENCE_SETUP' >/dev/null && '$XRUN_BIN' -clean -64bit -access +rwc -timescale 1ns/1ps -incdir '$REPO_ROOT' -incdir '$REPO_ROOT/rtl' -incdir '$REPO_ROOT/tb' -incdir '$REPO_ROOT/examples/$TOP' -incdir '$RTL_DIR' -incdir '$TB_DIR' -l '$SIM_DIR/xrun.log' '$RTL_FILE' '$TB_FILE'"
+    bash -lc "cd '$RTL_ROOT_DIR' && source '$CADENCE_SETUP' >/dev/null && '$XRUN_BIN' -clean -64bit -access +rwc -timescale 1ns/1ps -incdir '$RTL_ROOT_DIR' -incdir '$RTL_ROOT_DIR/rtl' -incdir '$RTL_ROOT_DIR/tb' -incdir '$REPO_ROOT' -incdir '$REPO_ROOT/rtl' -incdir '$REPO_ROOT/tb' -incdir '$REPO_ROOT/examples/$TOP' -incdir '$RTL_DIR' -incdir '$TB_DIR' -l '$SIM_DIR/xrun.log' '$RTL_FILE' '$TB_FILE'"
   ); then
     require_file "$SIM_DIR/xrun.log"
     record_stage "rtl_sim" "PASS" "log=$SIM_DIR/xrun.log"
