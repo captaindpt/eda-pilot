@@ -3,3 +3,10 @@ runs/
 *.cmd
 xcelium.d/
 waves.shm/
+.rs_v71349.tstamp
+fv/
+innovus.logv
+lc_output.txt
+power.rpt
+rc_model.bin
+streamOut.map
