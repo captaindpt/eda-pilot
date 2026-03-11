@@ -66,6 +66,7 @@ DEFAULT_SDC="$REPO_ROOT/constraints/$TOP.sdc"
 DEFAULT_TB="$REPO_ROOT/tb/tb_$TOP.v"
 EXAMPLE_RTL="$REPO_ROOT/examples/$TOP/$TOP.v"
 EXAMPLE_SDC="$REPO_ROOT/examples/$TOP/$TOP.sdc"
+EXAMPLE_TB="$REPO_ROOT/examples/$TOP/tb_$TOP.v"
 
 if [[ -f "$DEFAULT_RTL" ]]; then
   RTL_DEFAULT_VALUE="$DEFAULT_RTL"
@@ -81,7 +82,12 @@ fi
 
 RTL_FILE="${FLOW_RTL:-$RTL_DEFAULT_VALUE}"
 SDC_FILE="${FLOW_SDC:-$SDC_DEFAULT_VALUE}"
-TB_FILE="${FLOW_TB:-$DEFAULT_TB}"
+if [[ -f "$DEFAULT_TB" ]]; then
+  TB_DEFAULT_VALUE="$DEFAULT_TB"
+else
+  TB_DEFAULT_VALUE="$EXAMPLE_TB"
+fi
+TB_FILE="${FLOW_TB:-$TB_DEFAULT_VALUE}"
 RUN_ROOT="${FLOW_RUN_ROOT:-$REPO_ROOT/runs/digital-flow}"
 RUN_ID="$(date +%Y%m%d_%H%M%S)"
 RUN_DIR="$RUN_ROOT/${RUN_ID}_${TOP}"
@@ -557,7 +563,7 @@ if [[ -f "$TB_FILE" ]]; then
   echo "[rtl_sim] running Xcelium"
   if (
     cd "$SIM_DIR"
-    bash -lc "source '$CADENCE_SETUP' >/dev/null && '$XRUN_BIN' -clean -64bit -access +rwc -timescale 1ns/1ps -incdir '$REPO_ROOT' -incdir '$REPO_ROOT/rtl' -incdir '$REPO_ROOT/tb' -incdir '$RTL_DIR' -incdir '$TB_DIR' -l '$SIM_DIR/xrun.log' '$RTL_FILE' '$TB_FILE'"
+    bash -lc "source '$CADENCE_SETUP' >/dev/null && '$XRUN_BIN' -clean -64bit -access +rwc -timescale 1ns/1ps -incdir '$REPO_ROOT' -incdir '$REPO_ROOT/rtl' -incdir '$REPO_ROOT/tb' -incdir '$REPO_ROOT/examples/$TOP' -incdir '$RTL_DIR' -incdir '$TB_DIR' -l '$SIM_DIR/xrun.log' '$RTL_FILE' '$TB_FILE'"
   ); then
     require_file "$SIM_DIR/xrun.log"
     record_stage "rtl_sim" "PASS" "log=$SIM_DIR/xrun.log"

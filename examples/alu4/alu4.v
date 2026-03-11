@@ -34,3 +34,19 @@ module alu4_flow_demo (
         endcase
     end
 endmodule
+
+module alu4 (
+    input  [3:0] a,
+    input  [3:0] b,
+    input  [1:0] op,
+    output [3:0] y,
+    output       cout
+);
+    alu4_flow_demo u_core (
+        .a(a),
+        .b(b),
+        .op(op),
+        .y(y),
+        .cout(cout)
+    );
+endmodule
