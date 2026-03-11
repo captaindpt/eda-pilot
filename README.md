@@ -152,6 +152,11 @@ This repo includes a `CLAUDE.md` file designed as an agent bootstrap. Point Clau
 - How to run the smoke test before attempting anything larger
 - The stage contract for the full RTL-to-GDS flow
 
+## Built With eda-pilot
+
+[`torch2rtl`](https://github.com/captaindpt/torch2rtl) is a 4-lane SIMD GPU that compiles and runs PyTorch models, then synthesizes, places, routes, and times the design with this toolkit.
+Benchmark highlights: area `26494.056`, max frequency `118.34 MHz`, energy per inference `32.45 nJ`, SIMD speedup `3.93x`.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
