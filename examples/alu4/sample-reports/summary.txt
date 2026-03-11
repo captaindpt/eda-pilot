@@ -1,0 +1,27 @@
+module=alu4
+status=FAILED
+run_dir=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4
+rtl=/home/v71349/eda-pilot/examples/alu4/alu4.v
+sdc=/home/v71349/eda-pilot/examples/alu4/alu4.sdc
+synth_tool=genus
+dc_synth_lib=/CMC/kits/cadence/GPDK045/gsclib045_all_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib
+timing_lib=/CMC/kits/cadence/GPDK045/gsclib045_all_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib
+pt_requested_lib=/CMC/kits/cadence/GPDK045/gsclib045_all_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib
+pt_target_lib=/home/v71349/eda-pilot/runs/digital-flow/libcache/slow_vdd1v0_basicCells_ptsafe.lib
+pt_sdc=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/primetime/alu4_pt.sdc
+tb=/home/v71349/eda-pilot/examples/alu4/tb_alu4.v
+dc_mapped=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/dc/out/alu4_mapped.v
+innovus_def=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/innovus/out/alu4.def
+innovus_postroute=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/innovus/out/alu4_postroute.v
+innovus_gds=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/innovus/out/alu4.gds
+primetime_setup=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/primetime/reports/alu4_setup.rpt
+primetime_hold=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/primetime/reports/alu4_hold.rpt
+primetime_constraints=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/primetime/reports/alu4_constraints.rpt
+pegasus_db=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/pegasus/alu4.db
+
+stage	status	detail
+rtl_sim	PASS	log=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/rtl-sim/xrun.log
+synth	PASS	tool=genus netlist=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/dc/out/alu4_mapped.v
+innovus	PASS	gds=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/innovus/out/alu4.gds
+primetime	PASS	setup=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/primetime/reports/alu4_setup.rpt lib=/home/v71349/eda-pilot/runs/digital-flow/libcache/slow_vdd1v0_basicCells_ptsafe.lib
+pegasus	FAIL	violations_found log=/home/v71349/eda-pilot/runs/digital-flow/20260311_141748_alu4/pegasus/alu4_drc.log

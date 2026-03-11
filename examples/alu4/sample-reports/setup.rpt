@@ -1,0 +1,163 @@
+Information: Building multi voltage information for entire design. (MV-022)
+****************************************
+Report : timing
+	-path_type full
+	-delay_type max
+	-slack_lesser_than 1000.00
+	-max_paths 20
+	-sort_by slack
+Design : alu4
+Version: W-2024.09-SP2
+Date   : Wed Mar 11 14:19:10 2026
+****************************************
+
+
+  Startpoint: op[0] (input port clocked by virt_clk)
+  Endpoint: cout (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  op[0] (in)                               0.00       1.00 f
+  g1007/Y (INVX1)                          0.05       1.05 r
+  g999__9945/Y (MX2XL)                     0.17       1.22 r
+  g986__1881/Y (OAI21X1)                   0.08       1.30 f
+  g984__7098/Y (OAI2BB1X1)                 0.07       1.37 r
+  g980__1705/Y (AOI22X1)                   0.11       1.48 f
+  g974__5526/CO (ADDFX1)                   0.20       1.68 f
+  g971__6260/Y (XNOR2X1)                   0.16       1.84 r
+  g970__2398/Y (AND2X1)                    0.23       2.07 r
+  cout (out)                               0.00       2.07 r
+  data arrival time                                   2.07
+
+  max_delay                                8.00       8.00
+  clock reconvergence pessimism            0.00       8.00
+  output external delay                   -1.00       7.00
+  data required time                                  7.00
+  ---------------------------------------------------------------
+  data required time                                  7.00
+  data arrival time                                  -2.07
+  ---------------------------------------------------------------
+  slack (MET)                                         4.93
+
+
+  Startpoint: op[0] (input port clocked by virt_clk)
+  Endpoint: y[3] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  op[0] (in)                               0.00       1.00 f
+  g1007/Y (INVX1)                          0.05       1.05 r
+  g999__9945/Y (MX2XL)                     0.17       1.22 r
+  g986__1881/Y (OAI21X1)                   0.08       1.30 f
+  g984__7098/Y (OAI2BB1X1)                 0.07       1.37 r
+  g980__1705/Y (AOI22X1)                   0.11       1.48 f
+  g974__5526/S (ADDFX1)                    0.32       1.80 r
+  g973__4319/Y (NOR2X1)                    0.04       1.83 f
+  g972__5107/Y (OR2X1)                     0.23       2.07 f
+  y[3] (out)                               0.00       2.07 f
+  data arrival time                                   2.07
+
+  max_delay                                8.00       8.00
+  clock reconvergence pessimism            0.00       8.00
+  output external delay                   -1.00       7.00
+  data required time                                  7.00
+  ---------------------------------------------------------------
+  data required time                                  7.00
+  data arrival time                                  -2.07
+  ---------------------------------------------------------------
+  slack (MET)                                         4.93
+
+
+  Startpoint: op[0] (input port clocked by virt_clk)
+  Endpoint: y[2] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 r
+  op[0] (in)                               0.00       1.00 r
+  g1007/Y (INVX1)                          0.06       1.06 f
+  g999__9945/Y (MX2XL)                     0.15       1.21 f
+  g986__1881/Y (OAI21X1)                   0.07       1.29 r
+  g984__7098/Y (OAI2BB1X1)                 0.09       1.38 f
+  g983__2802/Y (XNOR2X1)                   0.14       1.53 f
+  g981/Y (INVX1)                           0.03       1.56 r
+  g978__6783/Y (OAI222X1)                  0.17       1.73 f
+  g975__8428/Y (MX2X1)                     0.33       2.06 f
+  y[2] (out)                               0.00       2.06 f
+  data arrival time                                   2.06
+
+  max_delay                                8.00       8.00
+  clock reconvergence pessimism            0.00       8.00
+  output external delay                   -1.00       7.00
+  data required time                                  7.00
+  ---------------------------------------------------------------
+  data required time                                  7.00
+  data arrival time                                  -2.06
+  ---------------------------------------------------------------
+  slack (MET)                                         4.94
+
+
+  Startpoint: b[0] (input port clocked by virt_clk)
+  Endpoint: y[1] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 r
+  b[0] (in)                                0.00       1.00 r
+  g1003__2398/Y (NAND2X1)                  0.08       1.08 f
+  g990__9315/Y (OAI21X1)                   0.06       1.14 r
+  g989/Y (INVXL)                           0.06       1.20 f
+  g985__6131/Y (XNOR2X1)                   0.20       1.39 r
+  g982__8246/Y (OAI2BB1X1)                 0.12       1.52 r
+  g976__1617/Y (MX2X1)                     0.27       1.79 r
+  y[1] (out)                               0.00       1.79 r
+  data arrival time                                   1.79
+
+  max_delay                                8.00       8.00
+  clock reconvergence pessimism            0.00       8.00
+  output external delay                   -1.00       7.00
+  data required time                                  7.00
+  ---------------------------------------------------------------
+  data required time                                  7.00
+  data arrival time                                  -1.79
+  ---------------------------------------------------------------
+  slack (MET)                                         5.21
+
+
+  Startpoint: op[0] (input port clocked by virt_clk)
+  Endpoint: y[0] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  op[0] (in)                               0.00       1.00 f
+  g1007/Y (INVX1)                          0.05       1.05 r
+  g1004__7410/Y (NAND2X1)                  0.09       1.15 f
+  g988__7482/Y (MX2X1)                     0.30       1.45 r
+  y[0] (out)                               0.00       1.45 r
+  data arrival time                                   1.45
+
+  max_delay                                8.00       8.00
+  clock reconvergence pessimism            0.00       8.00
+  output external delay                   -1.00       7.00
+  data required time                                  7.00
+  ---------------------------------------------------------------
+  data required time                                  7.00
+  data arrival time                                  -1.45
+  ---------------------------------------------------------------
+  slack (MET)                                         5.55
+
+
+1

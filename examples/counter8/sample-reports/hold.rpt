@@ -1,0 +1,478 @@
+****************************************
+Report : timing
+	-path_type full
+	-delay_type min
+	-slack_lesser_than 1000.00
+	-max_paths 20
+	-sort_by slack
+Design : counter8
+Version: W-2024.09-SP2
+Date   : Wed Mar 11 14:20:40 2026
+****************************************
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[0]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g279__6161/Y (NOR2X1)                    0.04       0.35 f
+  count_reg[0]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[0]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[1]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g274__7482/Y (AOI21XL)                   0.04       0.35 f
+  count_reg[1]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[1]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[2]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g269__1881/Y (AOI21XL)                   0.04       0.35 f
+  count_reg[2]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[2]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[3]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g262__1705/Y (AOI21XL)                   0.04       0.35 f
+  count_reg[3]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[3]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[4]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g256__6783/Y (AOI21XL)                   0.04       0.35 f
+  count_reg[4]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[4]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[5]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g250__5107/Y (AOI21XL)                   0.04       0.35 f
+  count_reg[5]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[5]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[7]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g255__6260/Y (NOR2X1)                    0.04       0.35 f
+  count_reg[7]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[7]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: rst (input port clocked by counter_clk)
+  Endpoint: count_reg[6]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  rst (in)                                 0.01       0.31 r
+  g247__2398/Y (NOR2X1)                    0.04       0.35 f
+  count_reg[6]/D (DFFQX2)                  0.00       0.35 f
+  data arrival time                                   0.35
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[6]/CK (DFFQX2)                            0.00 r
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  library hold time                        0.03       0.08
+  data required time                                  0.08
+  ---------------------------------------------------------------
+  data required time                                  0.08
+  data arrival time                                  -0.35
+  ---------------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: count_reg[7]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[7] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[7]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[7]/Q (DFFQX2)                  0.32       0.32 r
+  count[7] (out)                           0.00       0.32 r
+  data arrival time                                   0.32
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.32
+  ---------------------------------------------------------------
+  slack (MET)                                         0.57
+
+
+  Startpoint: count_reg[6]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[6] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[6]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[6]/Q (DFFQX2)                  0.32       0.32 r
+  count[6] (out)                           0.00       0.32 r
+  data arrival time                                   0.32
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.32
+  ---------------------------------------------------------------
+  slack (MET)                                         0.57
+
+
+  Startpoint: count_reg[0]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[0] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[0]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[0]/Q (DFFQX2)                  0.33       0.33 r
+  count[0] (out)                           0.00       0.33 r
+  data arrival time                                   0.33
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.33
+  ---------------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: count_reg[1]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[1] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[1]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[1]/Q (DFFQX2)                  0.33       0.33 r
+  count[1] (out)                           0.00       0.33 r
+  data arrival time                                   0.33
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.33
+  ---------------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: count_reg[3]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[3] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[3]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[3]/Q (DFFQX2)                  0.33       0.33 r
+  count[3] (out)                           0.00       0.33 r
+  data arrival time                                   0.33
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.33
+  ---------------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: count_reg[2]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[2] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[2]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[2]/Q (DFFQX2)                  0.33       0.33 r
+  count[2] (out)                           0.00       0.33 r
+  data arrival time                                   0.33
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.33
+  ---------------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: count_reg[5]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[5] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[5]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[5]/Q (DFFQX2)                  0.33       0.33 r
+  count[5] (out)                           0.00       0.33 r
+  data arrival time                                   0.33
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.33
+  ---------------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: count_reg[4]
+               (rising edge-triggered flip-flop clocked by counter_clk)
+  Endpoint: count[4] (output port clocked by counter_clk)
+  Path Group: counter_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg[4]/CK (DFFQX2)                 0.00       0.00 r
+  count_reg[4]/Q (DFFQX2)                  0.33       0.33 r
+  count[4] (out)                           0.00       0.33 r
+  data arrival time                                   0.33
+
+  clock counter_clk (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  clock uncertainty                        0.05       0.05
+  output external delay                   -0.30      -0.25
+  data required time                                 -0.25
+  ---------------------------------------------------------------
+  data required time                                 -0.25
+  data arrival time                                  -0.33
+  ---------------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+1

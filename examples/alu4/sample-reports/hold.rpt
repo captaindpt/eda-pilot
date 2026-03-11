@@ -1,0 +1,137 @@
+****************************************
+Report : timing
+	-path_type full
+	-delay_type min
+	-slack_lesser_than 1000.00
+	-max_paths 20
+	-sort_by slack
+Design : alu4
+Version: W-2024.09-SP2
+Date   : Wed Mar 11 14:19:10 2026
+****************************************
+
+
+  Startpoint: op[1] (input port clocked by virt_clk)
+  Endpoint: y[3] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  op[1] (in)                               0.00       1.00 f
+  g973__4319/Y (NOR2X1)                    0.06       1.06 r
+  g972__5107/Y (OR2X1)                     0.18       1.24 r
+  y[3] (out)                               0.00       1.24 r
+  data arrival time                                   1.24
+
+  min_delay                                0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  output external delay                   -1.00      -1.00
+  data required time                                 -1.00
+  ---------------------------------------------------------------
+  data required time                                 -1.00
+  data arrival time                                  -1.24
+  ---------------------------------------------------------------
+  slack (MET)                                         2.24
+
+
+  Startpoint: op[1] (input port clocked by virt_clk)
+  Endpoint: cout (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 r
+  op[1] (in)                               0.00       1.00 r
+  g1006/Y (INVX1)                          0.04       1.04 f
+  g970__2398/Y (AND2X1)                    0.20       1.24 f
+  cout (out)                               0.00       1.24 f
+  data arrival time                                   1.24
+
+  min_delay                                0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  output external delay                   -1.00      -1.00
+  data required time                                 -1.00
+  ---------------------------------------------------------------
+  data required time                                 -1.00
+  data arrival time                                  -1.24
+  ---------------------------------------------------------------
+  slack (MET)                                         2.24
+
+
+  Startpoint: a[1] (input port clocked by virt_clk)
+  Endpoint: y[1] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  a[1] (in)                                0.00       1.00 f
+  g976__1617/Y (MX2X1)                     0.26       1.26 f
+  y[1] (out)                               0.00       1.26 f
+  data arrival time                                   1.26
+
+  min_delay                                0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  output external delay                   -1.00      -1.00
+  data required time                                 -1.00
+  ---------------------------------------------------------------
+  data required time                                 -1.00
+  data arrival time                                  -1.26
+  ---------------------------------------------------------------
+  slack (MET)                                         2.26
+
+
+  Startpoint: a[2] (input port clocked by virt_clk)
+  Endpoint: y[2] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  a[2] (in)                                0.00       1.00 f
+  g975__8428/Y (MX2X1)                     0.26       1.26 f
+  y[2] (out)                               0.00       1.26 f
+  data arrival time                                   1.26
+
+  min_delay                                0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  output external delay                   -1.00      -1.00
+  data required time                                 -1.00
+  ---------------------------------------------------------------
+  data required time                                 -1.00
+  data arrival time                                  -1.26
+  ---------------------------------------------------------------
+  slack (MET)                                         2.26
+
+
+  Startpoint: op[1] (input port clocked by virt_clk)
+  Endpoint: y[0] (output port clocked by virt_clk)
+  Path Group: virt_clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  ---------------------------------------------------------------
+  input external delay                     1.00       1.00 f
+  op[1] (in)                               0.00       1.00 f
+  g1004__7410/Y (NAND2X1)                  0.06       1.06 r
+  g988__7482/Y (MX2X1)                     0.26       1.31 r
+  y[0] (out)                               0.00       1.31 r
+  data arrival time                                   1.31
+
+  min_delay                                0.00       0.00
+  clock reconvergence pessimism            0.00       0.00
+  output external delay                   -1.00      -1.00
+  data required time                                 -1.00
+  ---------------------------------------------------------------
+  data required time                                 -1.00
+  data arrival time                                  -1.31
+  ---------------------------------------------------------------
+  slack (MET)                                         2.31
+
+
+1
