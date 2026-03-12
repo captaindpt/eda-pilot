@@ -168,7 +168,7 @@ FLOW_SDC=/path/to/my_design.sdc \
 
 - **Platform**: CMC Cloud (Canadian Microelectronics Corporation) — headless Rocky Linux 8.10 VMs
 - **PDK**: Cadence GPDK045 (Generic 45nm) with `gsclib045` standard cells
-- **Cadence tools**: IC23, Spectre 23, Genus 21.17, Innovus 21.17, Xcelium 25.09, Pegasus 23.26, Quantus 23.10
+- **Cadence tools**: IC23, Spectre 23, Genus 21.17, Innovus 21.17, Xcelium 25.09, Pegasus 23.26, Quantus 24.10.000
 - **Synopsys tools**: Design Compiler W-2024.09-SP2, PrimeTime W-2024.09-SP2, Library Compiler W-2024.09-SP2, Sentaurus X-2025.09
 - **Licenses**: CMC license server at `licaccess.cmc.ca` (ports 6055 for Cadence, 6053 for Synopsys)
 
