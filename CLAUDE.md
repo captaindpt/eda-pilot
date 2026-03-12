@@ -77,7 +77,7 @@ Default outputs land under `runs/digital-flow/<timestamp>_alu4/`.
 - For RTL simulation, start with `recipes/xcelium.md`.
 - For synthesis, choose `recipes/design-compiler.md` or `recipes/genus.md`.
 - For place and route, continue with `recipes/innovus.md`.
-- For extraction and signoff, use `recipes/quantus.md`, `recipes/primetime.md`, and `recipes/pegasus.md`.
+- For extraction and post-route STA / DRC, use `recipes/quantus.md`, `recipes/primetime.md`, and `recipes/pegasus.md`.
 - For analog work, use `recipes/spectre.md` and `recipes/ocean.md`.
 - For TCAD, use `recipes/sentaurus.md`.
 - For stage contracts across the full digital flow, use `flows/rtl-to-gds.md`.
@@ -87,7 +87,7 @@ Default outputs land under `runs/digital-flow/<timestamp>_alu4/`.
 - CMC Cloud only. Paths and tool versions assume `/CMC/...`.
 - Headless-first. Everything in this repo should run without a GUI.
 - Digital examples target GPDK045.
-- GPDK045 is suitable for bring-up and benchmarking, not production signoff.
+- GPDK045 is suitable for bring-up and benchmarking, not production closure.
 
 ## Tool Activation
 

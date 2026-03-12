@@ -7,6 +7,9 @@ waves.shm/
 fv/
 innovus.logv
 lc_output.txt
+lc_shell_command.log
+parasitics_command.log
+pt_shell_command.log
 power.rpt
 rc_model.bin
 streamOut.map

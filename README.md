@@ -1,10 +1,18 @@
 # eda-pilot
 
-**An AI-agent-first toolkit for running Cadence and Synopsys EDA flows on CMC Cloud.**
+**An AI-agent-first bootstrap for running Cadence and Synopsys EDA flows on CMC Cloud.**
 
-Most EDA knowledge lives in tribal wikis, vendor PDFs, and years of muscle memory. This repo packages that knowledge as machine-readable recipes, bash-sourceable environment configs, and a single-command RTL-to-GDS flow runner — so an AI coding agent (or a human in a headless terminal) can go from `git clone` to placed-and-routed silicon in one session.
+Most EDA knowledge lives in tribal wikis, vendor PDFs, and years of muscle memory. This repo packages that knowledge as machine-readable recipes, bash-sourceable environment configs, and a reusable RTL-to-GDS flow runner so an AI coding agent (or a human in a headless terminal) can get from `git clone` to real simulation, synthesis, place-and-route, and timing artifacts in one session.
 
 Built on CMC Cloud infrastructure with GPDK045 (Cadence Generic 45nm PDK).
+
+## What It Looks Like
+
+<p align="center">
+  <img src="docs/images/post2_layout_bright4.png" alt="gpu_top layout produced by this flow" width="500">
+</p>
+
+<sub>A 4-lane SIMD GPU placed and routed on GPDK045 45nm using this flow runner — 27k um², ~10,800 cells. From <a href="https://github.com/captaindpt/torch2rtl">torch2rtl</a>.</sub>
 
 ## What's In the Box
 
@@ -31,14 +39,9 @@ Each recipe includes: setup commands, exact binary paths, minimal TCL/command ex
 
 `flows/run_digital_flow.sh` — a single bash script that chains the full digital implementation pipeline:
 
-```
-RTL + SDC
-    → Xcelium (simulation)
-        → Design Compiler or Genus (synthesis)
-            → Innovus (place & route → DEF, GDS)
-                → PrimeTime (static timing signoff)
-                    → Pegasus (DRC)
-```
+<p align="center">
+  <img src="docs/images/post2_pipeline.svg" alt="RTL-to-GDS pipeline" width="100%">
+</p>
 
 The runner auto-selects the synthesis backend (DC when given `.db` libraries, Genus when given `.lib`), handles PrimeTime library compilation/fallback, sanitizes SDC for cross-tool compatibility, and produces a structured `summary.txt` with pass/fail per stage.
 
@@ -63,7 +66,7 @@ source setup/synopsys.sh
 ./flows/run_digital_flow.sh alu4
 ```
 
-Outputs land in `runs/digital-flow/<timestamp>_alu4/` with per-stage logs, reports, the mapped netlist, routed DEF, GDS, and timing signoff reports.
+Outputs land in `runs/digital-flow/<timestamp>_alu4/` with per-stage logs, reports, the mapped netlist, routed DEF, GDS, and timing reports.
 
 ## Sample Output
 
@@ -72,6 +75,34 @@ Outputs land in `runs/digital-flow/<timestamp>_alu4/` with per-stage logs, repor
 - Sample reports are checked in under `examples/alu4/sample-reports/` and `examples/counter8/sample-reports/`
 - Both examples reached `rtl_sim`, synthesis, Innovus, and PrimeTime on `2026-03-11`
 - Pegasus still fails with the expected GPDK045 DRC baseline
+
+## What This Proves
+
+- An agent can bootstrap from zero to a working CMC EDA environment in one session.
+- The included runner can drive real simulation, synthesis, place-and-route, CTS, routed-SPEF timing analysis, and DRC on GPDK045.
+- The repo packages enough operational knowledge for an agent to act as the interface between humans and the installed tool stack.
+- The checked-in examples produce real reports from commercial EDA tools, not mocked output.
+
+## What This Does Not Prove
+
+- Production readiness.
+- Timing closure.
+- DRC closure on GPDK045.
+- LVS coverage in the default example flow.
+- A production tapeout flow.
+
+## Reproducibility
+
+Regenerate the checked-in example source artifacts with:
+
+```bash
+source setup/cadence.sh
+source setup/synopsys.sh
+./flows/run_digital_flow.sh alu4
+./flows/run_digital_flow.sh counter8
+```
+
+Those commands recreate the source run directories from which the checked-in sample-report bundles under `examples/alu4/sample-reports/` and `examples/counter8/sample-reports/` were copied.
 
 ## Repo Structure
 
@@ -117,6 +148,11 @@ The flow runner (`flows/run_digital_flow.sh`) is configurable via environment va
 | `FLOW_TB` | `tb/tb_<module>.v` or `examples/<module>/tb_<module>.v` | Testbench (skipped if missing) |
 | `FLOW_SYNTH_TOOL` | `auto` | Force `dc` or `genus` (auto-detects from library format) |
 | `FLOW_SPEF` | — | Pre-extracted parasitics for PrimeTime |
+| `FLOW_ENABLE_ACTIVITY_POWER` | `0` | Dump VCD during RTL sim and annotate Genus power from workload activity |
+| `FLOW_ACTIVITY_VCD_SCOPE` | `<tb_name>.dut` | Hierarchical scope passed to `read_vcd` in Genus |
+| `FLOW_ACTIVITY_HINST` | — | Optional Genus `read_vcd -hinst` target when scope alone is insufficient |
+| `FLOW_ENABLE_QUANTUS` | `1` | Attempt standalone Quantus extraction before PrimeTime |
+| `FLOW_QUANTUS_CORNER` | `typical` | Corner name for the standalone Quantus extraction config |
 | `FLOW_ENABLE_POWER_GRID` | `0` | Enable `addRing` + `sroute` in Innovus |
 | `FLOW_ENABLE_FILLERS` | `0` | Enable filler cell insertion + eco routing |
 
@@ -139,8 +175,9 @@ FLOW_SDC=/path/to/my_design.sdc \
 ## Known Limitations
 
 - **GPDK045 is an academic PDK.** It's suitable for flow bring-up, benchmarking, and learning — not production tapeout. The base `gsclib045` library lacks dedicated well-tap and endcap cells, which means Pegasus DRC will always report a standing baseline of violations (~1k for small designs, ~19k for larger ones). This is a kit limitation, not a design bug.
-- **No CTS in the smoke flow.** The Innovus script runs `placeDesign` → `routeDesign` without explicit clock tree synthesis. Fine for combinational logic and small sequential designs; real clock-heavy designs would need CTS added.
 - **PrimeTime library fallback.** If `lc_shell` is unlicensed, the runner builds a PT-safe Liberty file by stripping problematic TLAT cells. Timing results are still valid for the standard cell set.
+- **Standalone Quantus extraction is not fully robust yet.** The runner now attempts Quantus automatically, but on some designs it falls back to the routed SPEF emitted by Innovus `rcOut`. The run `summary.txt` records which path was used.
+- **CTS and extracted timing are included, not closed.** The flow now runs explicit CTS and propagated-clock PrimeTime with SPEF, but that does not imply the design meets timing.
 - **Headless only.** Everything is designed for batch/shell execution. No GUI flows, no Virtuoso schematic entry, no waveform viewers.
 
 ## For AI Agents
@@ -154,8 +191,12 @@ This repo includes a `CLAUDE.md` file designed as an agent bootstrap. Point Clau
 
 ## Built With eda-pilot
 
-[`torch2rtl`](https://github.com/captaindpt/torch2rtl) is a 4-lane SIMD GPU that compiles and runs PyTorch models, then synthesizes, places, routes, and times the design with this toolkit.
-Benchmark highlights: area `26494.056`, max frequency `118.34 MHz`, energy per inference `32.45 nJ`, SIMD speedup `3.93x`.
+[`torch2rtl`](https://github.com/captaindpt/torch2rtl) uses this toolkit to implement both a 4-lane SIMD GPU and a 1-lane scalar baseline for the same quantized MLP demo.
+Current checked-in highlights:
+
+- 4-lane SIMD: `27,124 um²` area, `86 MHz` extracted, `0.71 mW` VCD power, `15.9 nJ/inference`
+- 1-lane scalar: `7,431 um²` area, `91 MHz` extracted, `0.18 mW` VCD power, `8.2 nJ/inference`
+- SIMD wins on latency (`2x`); scalar wins on area (`3.7x`) and energy (`1.9x`)
 
 ## License
 
